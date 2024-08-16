@@ -1,0 +1,35 @@
+pdf1=pdf1.pdf
+pdf2=pdf1-b.pdf
+
+pdf1 has 1 different Metadata object(s)
+    - object with stream, line_no=61, len_bytes(object)=3571
+
+pdf2 has 1 different Metadata object(s)
+    - object with stream, line_no=61, len_bytes(object)=3571
+
+pdf1 has 1 different FontDescriptor object(s)
+    - line_no=276, obj=b'9 0 obj \n\n<<\n\n/FontName /XUXPCT+Aptos\n\n/StemV 84\n\n/FontFile2 7 0 R\n\n/Ascent 1010\n\n/Flags 32\n\n/FontWeight 400\n\n/XHeight 490\n\n/FontFamily (Aptos)\n\n/FontStretch /Normal\n\n/Descent -275\n\n/ItalicAngle 0\n\n/FontBBox [-500 -275 1182 1010]\n\n/Type /FontDescriptor\n\n/CapHeight 657\n\n>>\n\nendobj \n'
+
+pdf2 has 1 different FontDescriptor object(s)
+    - line_no=276, obj=b'9 0 obj \n\n<<\n\n/FontName /MTRTXF+Aptos\n\n/StemV 84\n\n/FontFile2 7 0 R\n\n/Ascent 1010\n\n/Flags 32\n\n/FontWeight 400\n\n/XHeight 490\n\n/FontFamily (Aptos)\n\n/FontStretch /Normal\n\n/Descent -275\n\n/ItalicAngle 0\n\n/FontBBox [-500 -275 1182 1010]\n\n/Type /FontDescriptor\n\n/CapHeight 657\n\n>>\n\nendobj \n'
+
+pdf1 has 1 different Font object(s)
+    - line_no=289, obj=b'5 0 obj \n\n<<\n\n/FirstChar 32\n\n/ToUnicode 8 0 R\n\n/FontDescriptor 9 0 R\n\n/Encoding /WinAnsiEncoding\n\n/BaseFont /XUXPCT+Aptos\n\n/Subtype /TrueType\n\n/LastChar 122\n\n/Widths [203 0 0 0 0 0 0 0 0 0 0 0 0 0 286 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 479 0 0 0 0 0 0 0 0 0 0 0 0 531 561 525 561 527 301 484 551 239 239 487 260 853 551 552 561 561 334 486 323 559 452 721 442 452 438]\n\n/Type /Font\n\n>>\n\nendobj \n'
+
+pdf2 has 1 different Font object(s)
+    - line_no=289, obj=b'5 0 obj \n\n<<\n\n/FirstChar 32\n\n/ToUnicode 8 0 R\n\n/FontDescriptor 9 0 R\n\n/Encoding /WinAnsiEncoding\n\n/BaseFont /MTRTXF+Aptos\n\n/Subtype /TrueType\n\n/LastChar 122\n\n/Widths [203 0 0 0 0 0 0 0 0 0 0 0 0 0 286 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 479 0 0 0 0 0 0 0 0 0 0 0 0 531 561 525 561 527 301 484 551 239 239 487 260 853 551 552 561 561 334 486 323 559 452 721 442 452 438]\n\n/Type /Font\n\n>>\n\nendobj \n'
+
+pdf1 has 2 different _none_ object(s)
+    - line_no=299, obj=b"10 0 obj \n\n<<\n\n/Creator (Acrobat PDFMaker 24 for Word)\n\n/Title ()\n\n/Author ()\n\n/Producer (Adobe PDF Library 24.2.255)\n\n/ModDate (D:20240816004404-05'00')\n\n/CreationDate (D:20240816004403-05'00')\n\n>>\n\nendobj xref\n"
+
+    - object with stream, line_no=207, len_bytes(object)=22037
+
+pdf2 has 2 different _none_ object(s)
+    - object with stream, line_no=207, len_bytes(object)=22037
+
+    - line_no=299, obj=b"10 0 obj \n\n<<\n\n/Creator (Acrobat PDFMaker 24 for Word)\n\n/Title ()\n\n/Author ()\n\n/Producer (Adobe PDF Library 24.2.255)\n\n/ModDate (D:20240816004600-05'00')\n\n/CreationDate (D:20240816004600-05'00')\n\n>>\n\nendobj xref\n"
+
+
+* * * * * * * * * *
+PDFs don't match!
+* * * * * * * * * *

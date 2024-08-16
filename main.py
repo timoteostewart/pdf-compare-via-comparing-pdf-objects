@@ -68,10 +68,6 @@ def compare_pdfs(pdf1, pdf2):
                     cur_object_type = ""
                     contains_stream = False
 
-    print(f"pdf1={pdf1}")
-    print(f"pdf2={pdf2}")
-    print()
-
     # first compare the types of objects in each pdf. if they don't match, then the pdfs don't match.
     pdf1_obj_types = set(obj[2] for obj in pdf_objs[pdf1])
     pdf2_obj_types = set(obj[2] for obj in pdf_objs[pdf2])
@@ -111,9 +107,11 @@ def compare_pdfs(pdf1, pdf2):
             )
             for x in in_set1_but_not_set2:
                 if x[2]:
-                    print(f"    - object with stream, len_bytes(object)={len(x[1])}\n")
+                    print(
+                        f"    - object with stream, line_no={x[0]}, len_bytes(object)={len(x[1])}\n"
+                    )
                 else:
-                    print(f"    - {x}\n")
+                    print(f"    - line_no={x[0]}, obj={x[1]}\n")
 
         if in_set2_but_not_set1:
             dont_match = True
@@ -122,9 +120,11 @@ def compare_pdfs(pdf1, pdf2):
             )
             for x in in_set2_but_not_set1:
                 if x[2]:
-                    print(f"    - object with stream, len_bytes(object)={len(x[1])}\n")
+                    print(
+                        f"    - object with stream, line_no={x[0]}, len_bytes(object)={len(x[1])}\n"
+                    )
                 else:
-                    print(f"    - {x}\n")
+                    print(f"    - line_no={x[0]}, obj={x[1]}\n")
 
     if dont_match:
         print(dont_match_message)
@@ -177,4 +177,45 @@ if __name__ == "__main__":
         pdf1_uncompressed = uncompress_pdf(pdf1, pdf1_uncompressed)
         pdf2_uncompressed = uncompress_pdf(pdf2, pdf2_uncompressed)
 
+        print(f"pdf1={pdf1}")
+        print(f"pdf2={pdf2}")
+        print()
+
         compare_pdfs(pdf1_uncompressed, pdf2_uncompressed)
+
+"""
+
+TODO:
+create and use a PDFObject class that has Type, Subtype, and stream fields
+
+TODO: ignore if only difference is metadata related to ModDate and CreationDate
+- but *do* error if creator, Author, or Producer differs
+
+    pdf1 has 2 different _none_ object(s)
+        - line_no=299, obj=b"10 0 obj \n\n<<\n\n/Creator (Acrobat PDFMaker 24 for Word)\n\n/Title ()\n\n/Author ()\n\n/Producer (Adobe PDF Library 24.2.255)\n\n/ModDate (D:20240816004404-05'00')\n\n/CreationDate (D:20240816004403-05'00')\n\n>>\n\nendobj xref\n"
+
+        - object with stream, line_no=207, len_bytes(object)=22037
+
+    pdf2 has 2 different _none_ object(s)
+        - object with stream, line_no=207, len_bytes(object)=22037
+
+        - line_no=299, obj=b"10 0 obj \n\n<<\n\n/Creator (Acrobat PDFMaker 24 for Word)\n\n/Title ()\n\n/Author ()\n\n/Producer (Adobe PDF Library 24.2.255)\n\n/ModDate (D:20240816004600-05'00')\n\n/CreationDate (D:20240816004600-05'00')\n\n>>\n\nendobj xref\n"
+
+
+TODO: ignore if the only difference is the substrings such as "XUXPCT" and "MTRTXF" substrings in the BaseFont field of a Font object
+
+    pdf1 has 1 different FontDescriptor object(s)
+        - line_no=276, obj=b'9 0 obj \n\n<<\n\n/FontName /XUXPCT+Aptos\n\n/StemV 84\n\n/FontFile2 7 0 R\n\n/Ascent 1010\n\n/Flags 32\n\n/FontWeight 400\n\n/XHeight 490\n\n/FontFamily (Aptos)\n\n/FontStretch /Normal\n\n/Descent -275\n\n/ItalicAngle 0\n\n/FontBBox [-500 -275 1182 1010]\n\n/Type /FontDescriptor\n\n/CapHeight 657\n\n>>\n\nendobj \n'
+
+    pdf2 has 1 different FontDescriptor object(s)
+        - line_no=276, obj=b'9 0 obj \n\n<<\n\n/FontName /MTRTXF+Aptos\n\n/StemV 84\n\n/FontFile2 7 0 R\n\n/Ascent 1010\n\n/Flags 32\n\n/FontWeight 400\n\n/XHeight 490\n\n/FontFamily (Aptos)\n\n/FontStretch /Normal\n\n/Descent -275\n\n/ItalicAngle 0\n\n/FontBBox [-500 -275 1182 1010]\n\n/Type /FontDescriptor\n\n/CapHeight 657\n\n>>\n\nendobj \n'
+
+    pdf1 has 1 different Font object(s)
+        - line_no=289, obj=b'5 0 obj \n\n<<\n\n/FirstChar 32\n\n/ToUnicode 8 0 R\n\n/FontDescriptor 9 0 R\n\n/Encoding /WinAnsiEncoding\n\n/BaseFont /XUXPCT+Aptos\n\n/Subtype /TrueType\n\n/LastChar 122\n\n/Widths [203 0 0 0 0 0 0 0 0 0 0 0 0 0 286 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 479 0 0 0 0 0 0 0 0 0 0 0 0 531 561 525 561 527 301 484 551 239 239 487 260 853 551 552 561 561 334 486 323 559 452 721 442 452 438]\n\n/Type /Font\n\n>>\n\nendobj \n'
+
+    pdf2 has 1 different Font object(s)
+        - line_no=289, obj=b'5 0 obj \n\n<<\n\n/FirstChar 32\n\n/ToUnicode 8 0 R\n\n/FontDescriptor 9 0 R\n\n/Encoding /WinAnsiEncoding\n\n/BaseFont /MTRTXF+Aptos\n\n/Subtype /TrueType\n\n/LastChar 122\n\n/Widths [203 0 0 0 0 0 0 0 0 0 0 0 0 0 286 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 479 0 0 0 0 0 0 0 0 0 0 0 0 531 561 525 561 527 301 484 551 239 239 487 260 853 551 552 561 561 334 486 323 559 452 721 442 452 438]\n\n/Type /Font\n\n>>\n\nendobj \n'
+
+
+
+"""
