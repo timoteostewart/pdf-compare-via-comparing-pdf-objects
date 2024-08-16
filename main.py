@@ -11,6 +11,7 @@ do_match_message = "\n* * * * * * * * * *\nPDFs match!\n* * * * * * * * * *"
 
 
 def uncompress_pdf(input_pdf_path, output_pdf_path):
+    # TODO: allow other tools besides `pdftk` to be used to uncompress PDFs
     try:
         subprocess.check_call(
             ["pdftk", input_pdf_path, "output", output_pdf_path, "uncompress"]

@@ -1,8 +1,0 @@
-pdf1=C:\Users\tim\AppData\Local\Temp\tmpaj4d5r94\pdf1-comp-unc.pdf
-pdf2=C:\Users\tim\AppData\Local\Temp\tmpaj4d5r94\pdf1b-comp-unc.pdf
-
-pdf2 has object types 'Metadata' that pdf1 doesn't have
-
-* * * * * * * * * *
-PDFs don't match!
-* * * * * * * * * *
