@@ -4,7 +4,7 @@ import sys
 import tempfile
 from collections import defaultdict
 
-# host system dependencies: requires `pdftk` to be installed and findable in the PATH
+# current host system dependencies: requires `pdftk` to be installed and findable in the PATH
 
 dont_match_message = "\n* * * * * * * * * *\nPDFs don't match!\n* * * * * * * * * *"
 do_match_message = "\n* * * * * * * * * *\nPDFs match!\n* * * * * * * * * *"
